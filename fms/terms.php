@@ -21,15 +21,8 @@
 								</ol>
 							</div>
 
-							<h4 class="title mx-auto">Privacy Policy:</h4>
-							<div>
-								<ol>
-									<li>Personal Information includes name and email address</li>
-									<li>Trash includes restore and delete</li><br><i> This website <b>DO NOT</b> share your personal information to any party.</i>
-								</ol>
-							</div>
 
-							<h4 class="title mx-auto">Guidelines for Website Purchase:</h4>
+							<h4 class="title mx-auto"><br>Guidelines for Website Purchase:</h4>
 							<div>
 							<div>
 								<p>If other organizations wants to purchase this website, we collect personal information from them to fulfill the process. 
@@ -38,8 +31,6 @@
 								<ol>
 									<li>Name</li>
 									<li>Institutions/Organizations</li>
-									<li>Email Address</li>
-									<li>Phone Number</li>
 									<li>Payment Method </li><br> (for example: <i>Organization A </i>will purchase this website for their students and faculty...)
 								</ol>
 							</div>
