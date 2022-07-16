@@ -1687,3 +1687,7 @@ span.stat-icons {
 .bg-dark {
   color: #194589;
 }
+
+.custom-menu-list i, .custom-menu-list span {
+  margin-right: 5px;
+}

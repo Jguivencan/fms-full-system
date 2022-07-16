@@ -295,6 +295,7 @@ a.custom-menu-list span.icon{
 															<a  data-id="<?php echo $row['id'] ?>"   class="custom-menu-list file-option download"><span><i class="fa fa-download"></i> </span> Download</a>
 															<a  data-id="<?php echo $row['id'] ?>"   class="custom-menu-list file-option delete"><span><i class="fa fa-trash"></i> </span> Delete</a>
 															<a  data-id="<?php echo $row['id'] ?>"   class="custom-menu-list file-option share" data-toggle="modal" data-target="#userShare" ><span><i class="fa fa-solid fa-share"></i></span> Share</a>
+															<a  data-id="<?php echo $row['id'] ?>" data-name="<?php echo $name ?>"  class="custom-menu-list file-option copy-link"><i class="fa-solid fa-copy"></i> Copy Link</a>
 														</div>
 													</div>
 												</div>
@@ -372,7 +373,7 @@ a.custom-menu-list span.icon{
     </div>
   </div>
 </div>
-
+<input type="hidden" id="link-placeholder">
 <div id="menu-folder-clone" style="display: none;">
 	<a href="javascript:void(0)" class="custom-menu-list file-option edit">Rename</a>
 	<a href="javascript:void(0)" class="custom-menu-list file-option delete">Delete</a>
@@ -512,6 +513,7 @@ const file ={
 		this.select2()
 		this.saveShare()
 		this.shareToAll()
+		this.copyLink()
 		
 	},
 	share: function() {
@@ -580,6 +582,25 @@ const file ={
 				}
 			})
 		})
+	},
+	copyLink: function(){
+		$('.copy-link').on('click', function(e){
+			e.preventDefault()
+			let $this= $(this)
+			let id = $this.data('id');
+			let name = $this.data('name');
+			$('#link-placeholder').val(`<a href="http://localhost/system/fms/index.php?page=shared_docss&file_id=${id}" target="_blank">${name}</a>`)
+			 /* Get the text field */
+			 var copyText = document.getElementById("link-placeholder");
+
+			/* Select the text field */
+			copyText.select();
+
+			/* Copy the text inside the text field */
+			navigator.clipboard.writeText(copyText.value);
+			alert_toast("Link Copied!.",'success')
+		})
+		
 	}
 } 
 file.init();

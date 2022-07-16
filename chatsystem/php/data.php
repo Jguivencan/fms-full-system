@@ -1,4 +1,13 @@
 <?php
+
+    function checksHtml($msg){
+        if (trim(strip_tags($msg)) == '' || strip_tags($msg) == '') {
+            return "html text";
+        }
+        else{
+            return $msg;
+        }
+    }
     while($row = mysqli_fetch_assoc($query)){
         $sql2 = "SELECT * FROM messages WHERE (incoming_msg_id = {$row['unique_id']}
                 OR outgoing_msg_id = {$row['unique_id']}) AND (outgoing_msg_id = {$outgoing_id} 
@@ -20,10 +29,11 @@
                     
                     <div class="details">
                         <span>'. $row['fname']. " "  .'</span>
-                        <p>'. $you . $msg .'</p>
+                        <p>'. $you . checksHtml($msg ).'</p>
                     </div>
                     </div>
                     <div class="status-dot '. $offline .'"><i class="fas fa-circle"></i></div>
                 </a>';
     }
+    // <p>'. $you . htmlspecialchars($msg ).'</p>
 ?>

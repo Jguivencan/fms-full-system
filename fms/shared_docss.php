@@ -22,7 +22,8 @@ function get_file(){
 }
 
 $folder_parent = isset($_GET['fid'])? $_GET['fid'] : 0;
-$folders = $conn->query("SELECT * FROM folders where parent_id = $folder_parent and user_id = '".$_SESSION['login_id']."'  order by name asc");
+//$folders = $conn->query("SELECT * FROM folders where parent_id = $folder_parent and user_id = '".$_SESSION['login_id']."'  order by name asc");
+// $folders = [];
 $current_user_id = $_SESSION['login_id'];
 
 function folder_id_clause($folder_parent){
@@ -37,7 +38,7 @@ function folder_id_clause($folder_parent){
 $files = $conn->query("select files.*,  folders.name as folder_name from share
 						left join files on files.id = share.file_id
 						left join folders on folders.id = files.folder_id
-						where share.user_id = $current_user_id "  . folder_id_clause($folder_parent) . get_search() . get_file() ." and files.is_deleted != 1 order by files.name asc " );
+						where share.user_id = $current_user_id "  . folder_id_clause($folder_parent) . get_search() . get_file() ." and files.is_deleted != 1  group by files.id order by share.id desc " );
 // echo "<pre>";
 // print_r($files);
 // die;
@@ -89,16 +90,10 @@ a.custom-menu-list span.icon{
 	</div>
 	<hr>
 	<div class="col-lg-12">
+		
+		<?php if(empty($_GET['file_id'])):?>
 		<div class="row">
 			<div class="col-lg-12">
-				<!-- <form action="">
-					<div class="col-md-4 input-group offset-4">
-						<input type="text" class="form-control" id="search" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-						<div class="input-group-append">
-							<span class="input-group-text" id="inputGroup-sizing-sm"><i class="fa fa-search"></i></span>
-						</div>
-					</div>
-				</form> -->
 				<form action="index.php" method="get">
 					<div class="input-group ">
 						<div class="input-group-prepend">
@@ -111,26 +106,14 @@ a.custom-menu-list span.icon{
 			</div>
 		</div>
 		<hr>
-		<div class="row">
-			<div class="col-md-12"><h4><b>Folders</b></h4></div>
-		</div>
-		<hr>
-		<div class="row">
-			<?php 
-			while($row=$folders->fetch_assoc()):
-			?>
-				<div class="card col-md-3 mt-2 ml-2 mr-2 mb-2 folder-item" data-id="<?php echo $row['id'] ?>">
-					<div class="card-body">
-							<large><span><i class="fa fa-folder"></i></span><b class="to_folder"> <?php echo $row['name'] ?></b></large>
-					</div>
-				</div>
-			<?php endwhile; ?>
-		</div>
-		<hr>
-		<?php #$rows = $files->fetch_assoc()?>
+		<?php endif?>
 		<?php if(!empty($_GET['q'])):?>
 			<h4> Search Results </h4>
 		<?php endif ?>
+		<?php if(!empty($_GET['file_id'])):?>
+			<h4> Directly Shared  File</h4>
+		<?php endif ?>
+		
 		<div class="row">
 			<div class="card col-md-12">
 				<div class="card-body">
@@ -163,7 +146,7 @@ a.custom-menu-list span.icon{
 						<tr class='file-item' data-id="<?php echo $row['id'] ?>" data-name="<?php echo $name ?>">
 							<td><large><span><i class="fa <?php echo $icon ?>"></i></span><b class="to_file"> <?php echo $name ?></b></large>
 							<input type="text" class="rename_file" value="<?php echo $row['name'] ?>" data-id="<?php echo $row['id'] ?>" data-type="<?php echo $row['file_type'] ?>" style="display: none">
-
+							<hr>
 							</td>
 							<td><i class="to_file"><?php echo date('Y/m/d h:i A',strtotime($row['date_updated'])) ?></i></td>
 							<td><i class="to_file"><?php echo $row['description'] ?></i></td>

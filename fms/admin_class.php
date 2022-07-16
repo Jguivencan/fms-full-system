@@ -158,21 +158,27 @@ Class Action {
 		$data = " name = '$name' ";
 		$data .= ", username = '$username' ";
 		$data .= ", password = '$password' ";
-		//$data .= ", type = '$type' ";
+		$is_existed = $this->db->query("select users.id, users.username as text from users where username='$username'  ")->fetch_row();
+		
+		if(!empty($is_existed)){
+		return "existed";
+		}
 		if(empty($id)){
 			$save = $this->db->query("INSERT INTO users set ".$data);
 		}else{
 			$save = $this->db->query("UPDATE users set ".$data." where id = ".$id);
 		}
 		if($save){
+			$registered_user = $this->db->query("select * from users where username='$username' and password = '$password' ")->fetch_row();
+			$_SESSION['login_id'] = $registered_user[0];
+			$_SESSION['login_name'] = $registered_user[1];
+			$_SESSION['login_username'] =$registered_user[2];
+			$_SESSION['login_password'] = $registered_user[3];
 			return 1;
 		}
 	}
 
 	public function save_shared_docs(){
-		echo "<pre>";
-		print_r($_POST);
-		die;
 		$file_id = $_POST['file_id'];
 		if(!empty($_POST['users'])){
 			foreach($_POST['users'] as $user){

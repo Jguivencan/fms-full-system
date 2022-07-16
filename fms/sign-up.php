@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link rel="stylesheet" href="style.css">-->
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.23/dist/sweetalert2.all.min.js"></script>
 </head>
 <?php 
     include('db_connect.php');
@@ -76,33 +77,14 @@
 </html>
 <script src="script.js"></script>
 <script>
-	$('#manage-user').submit(function(e){
-		e.preventDefault();
-		start_load()
-		$.ajax({
-			url:'ajax.php?action=save_user',
-			method:'POST',
-			data:$(this).serialize(),
-			success:function(resp){
-				if(resp ==1){
-					alert_toast("Data successfully saved",'success')
-					setTimeout(function(){
-						location.reload()
-					},1500)
-				}
-			}
-		})
-	})
-</script>
-<script>
 	 window.start_load = function(){
-    $('body').prepend('<di id="preloader2"></di>')
-  }
-  window.end_load = function(){
-    $('#preloader2').fadeOut('fast', function() {
-        $(this).remove();
-      })
-  }
+        $('body').prepend('<di id="preloader2"></di>')
+    }
+    window.end_load = function(){
+        $('#preloader2').fadeOut('fast', function() {
+            $(this).remove();
+        })
+    }
 
   window.uni_modal = function($title = '' , $url=''){
     start_load()
@@ -149,4 +131,51 @@ window._conf = function($msg='',$func='',$params = []){
         $(this).remove();
       })
   })
+
+  $('#manage-user').submit(function(e){
+		e.preventDefault();
+        let $email = $('[name="username"]').val();
+        console.log($email);
+        
+        if(validateEmail($email)){
+            start_load()
+            $.ajax({
+                url:'ajax.php?action=save_user',
+                method:'POST',
+                data:$(this).serialize(),
+                success:function(resp){
+                    if(resp ==1){
+                        alert_toast("Data successfully saved",'success')
+                        setTimeout(function(){
+                            window.location = "http://localhost/system/fms/index.php?page=files";
+                        },1500)
+                    }
+                    if(resp == "existed"){
+                        // alert("User is already Registered!",'warning')
+                        $('#preloader2').fadeOut('fast', function() {
+                            $(this).remove();
+                        })
+                        Swal.fire(
+                        'Oopss!',
+                        'User is already Registered!',
+                        'warning'
+                        );
+                    }
+                }
+            })
+        }else{
+            Swal.fire(
+                'Oopss!',
+                'Email domain must be within TUP!',
+                'warning'
+                );
+        }
+	})
+    function validateEmail($email){
+        if (/@tup.edu.ph\s*$/.test($email)) {
+         return 1
+        }else{
+         return 0
+        }
+    }
 </script>	

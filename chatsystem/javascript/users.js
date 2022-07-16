@@ -33,7 +33,7 @@ searchBar.onkeyup = ()=>{
   xhr.send("searchTerm=" + searchTerm);
 }
 
-setInterval(() =>{
+// setInterval(() =>{
   let xhr = new XMLHttpRequest();
   xhr.open("GET", "php/users.php", true);
   xhr.onload = ()=>{
@@ -47,5 +47,5 @@ setInterval(() =>{
     }
   }
   xhr.send();
-}, 500);
+// }, 500);
 

@@ -14,6 +14,9 @@
     header('location:login_page.php');
  include('./header.php'); 
  // include('./auth.php'); 
+//  echo "<pre>";
+//  print_r($_SESSION);
+//  die;
  ?>
 
 </head>
