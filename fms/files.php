@@ -574,7 +574,7 @@ const file ={
 				success:function(resp){
 					console.log(resp)
 					if(resp.is_valid == 1){
-						alert_toast("File successfully shared!.",'success')
+						alert_toast("File successfully shared.",'success')
 							setTimeout(function(){
 								location.reload()
 							},1500)
