@@ -498,7 +498,7 @@ a.custom-menu-list span.icon{
 			data:{id:$id},
 			success:function(resp){
 				if(resp == 1){
-					alert_toast("Folder successfully deleted.",'success')
+					alert_toast("File successfully deleted.",'success')
 						setTimeout(function(){
 							location.reload()
 						},1500)
