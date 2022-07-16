@@ -25,13 +25,13 @@ function get_by_type($types){
 		return ' and  files.file_type in ("docx", "pdf", "csv", "xsl", "xlsx", "pptx", "xls")';
 	}
 	else if(isset($_GET['file_type'])  && $query == 'video'){
-		return ' and  files.file_type in ("avi", "mp4", "mp3")';
+		return ' and  files.file_type in ("avi", "mp4", "avi", "webm", "mov")';
 	}
 	else if(isset($_GET['file_type'])  && $query == 'images'){
 		return ' and  files.file_type in ("jpg", "jpeg", "mac")';
 	}
 	else if(isset($_GET['file_type'])  && $query == 'others'){
-		return ' and  files.file_type not in ("docx", "pdf", "csv", "xsl", "xlsx", "pptx", "avi", "mp4", "mp3", "jpg", "jpeg", "mac", "xls")';
+		return ' and  files.file_type not in ("docx", "pdf", "csv", "xsl", "xlsx", "pptx", "avi", "mp4", "avi", "webm", "mov", "jpg", "jpeg", "mac", "xls")';
 	}
 	else{
 		return " ";
