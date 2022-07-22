@@ -62,7 +62,7 @@ $qry = $conn->query("SELECT * FROM files where id=".$_GET['id']);
 				if(typeof resp != undefined){
 					resp = JSON.parse(resp);
 					if(resp.status == 1){
-						alert_toast("New File successfully added.",'success')
+						alert_toast("File successfully added",'success')
 						setTimeout(function(){
 							location.reload()
 						},1500)

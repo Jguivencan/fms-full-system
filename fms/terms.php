@@ -26,7 +26,7 @@
 							<div>
 							<div>
 								<p>If other organizations wants to purchase this website, we collect personal information from them to fulfill the process. 
-									In adding storage capacity, please refer to our contact jguivencan@gmail.com.<br><br>We may collect information like:</p>
+									In adding storage capacity, please refer to our contact docss.org@gmail.com.<br><br>We may collect information like:</p>
 							</div>
 								<ol>
 									<li>Name</li>

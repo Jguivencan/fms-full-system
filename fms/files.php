@@ -364,7 +364,7 @@ a.custom-menu-list span.icon{
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-info" id="share-to-all">Share to all</button>
+				<!-- <button type="button" class="btn btn-info" id="share-to-all">Share to all</button> -->
 				<button type="submit" class="btn btn-primary">Share File</button>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 			</div>
