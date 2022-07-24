@@ -242,10 +242,10 @@ a.custom-menu-list span.icon{
 						}?>
 						<div class="row" >
 							<div class="col-1"><a  data-toggle="tooltip" data-placement="left" title="Reset Filter" href="index.php?page=files<?php get_setter()?>"><span><i class="fa-solid fa-arrow-rotate-right"></i></span></a></div>
-							<div class="col-3"><span><a style="<?php echo isset($_GET["file_type"]) && $_GET["file_type"] == "docs" ? "color:#226dbd" : null?>" href="index.php?page=files&file_type=docs<?php get_setter()?>" class="active"><i class="fa-solid fa-file-lines"></i></span> Documents</a></div>
-							<div class="col-3"><span><a style="<?php echo isset($_GET["file_type"]) && $_GET["file_type"] == "video" ? "color:#226dbd" : null?>" href="index.php?page=files&file_type=video<?php get_setter()?>"><i class="fa-solid fa-video"></i></i></span> Videos</a></div>
-							<div class="col-3"><span><a style="<?php echo isset($_GET["file_type"]) && $_GET["file_type"] == "images" ? "color:#226dbd" : null?>" href="index.php?page=files&file_type=images<?php get_setter()?>"><i class="fa-solid fa-images"></i></span> Images </a></div>
-							<div class="col-2"><span><a style="<?php echo isset($_GET["file_type"]) && $_GET["file_type"] == "others" ? "color:#226dbd" : null?>"href="index.php?page=files&file_type=others<?php get_setter()?>"><i class="fa-solid fa-folder"></i></span> Others</a></div>
+							<div class="col-3"><span><a style="<?php echo isset($_GET["file_type"]) && $_GET["file_type"] == "docs" ? "color:#093560" : null?>" href="index.php?page=files&file_type=docs<?php get_setter()?>" class="active"><i class="fa-solid fa-file-lines"></i></span> Documents</a></div>
+							<div class="col-3"><span><a style="<?php echo isset($_GET["file_type"]) && $_GET["file_type"] == "video" ? "color:#093560" : null?>" href="index.php?page=files&file_type=video<?php get_setter()?>"><i class="fa-solid fa-video"></i></i></span> Videos</a></div>
+							<div class="col-3"><span><a style="<?php echo isset($_GET["file_type"]) && $_GET["file_type"] == "images" ? "color:#093560" : null?>" href="index.php?page=files&file_type=images<?php get_setter()?>"><i class="fa-solid fa-images"></i></span> Images </a></div>
+							<div class="col-2"><span><a style="<?php echo isset($_GET["file_type"]) && $_GET["file_type"] == "others" ? "color:#093560" : null?>"href="index.php?page=files&file_type=others<?php get_setter()?>"><i class="fa-solid fa-folder"></i></span> Others</a></div>
 						</div>
 					</div>
 				</div>
